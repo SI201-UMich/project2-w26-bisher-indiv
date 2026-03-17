@@ -1,0 +1,11 @@
+
+Question 1:
+
+I believe the current system doesn't provide enough accountability for short-term rentals in San Francisco. It's mainly reliant on the public to report issues, which means hosts can operate illegally for a long time without facing consequences. A better approach would be for Airbnb to automatically verify policy numbers against the city's database before listing a property, rather than leaving enforcement up to third parties and investigators. Without proactive measures, hosts who ignore registration requirements face little risk of being caught, undermining the regulation's purpose.
+
+Question 2:
+A key factor in discussing the legality of web scraping is whether the data being collected is publicly accessible or requires bypassing some form of security. The Computer Fraud and Abuse Act has been interpreted differently in various court cases, but an important question is whether scraping a public website constitutes unauthorized access. In the hiQ v. LinkedIn case, the court held that scraping publicly available data does not violate the CFAA, underscoring that accessibility matters. I think this distinction is crucial because it clearly separates the collection of openly available information from breaking into protected systems.
+
+Question 3:
+Two important guidelines I believe should be considered before engaging in web scraping are:
+First, consider whether the data collection could harm the individuals whose information is being scraped, even if it's publicly posted. Just because someone shares information openly doesn’t mean they consent to having it collected, analyzed, or used in unexpected ways. Second, reflect on whether the purpose of the scraping serves a genuine public interest. For example, collecting data to hold governments or corporations accountable, like in investigative journalism, can be justified and meaningful.
