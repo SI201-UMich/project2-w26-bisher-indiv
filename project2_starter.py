@@ -200,7 +200,7 @@ def output_csv(data, filename) -> None:
         writer.writerow(["Listing Title", "Listing ID", "Policy Number",
                          "Host Type", "Host Name", "Room Type", "Location Rating"])
         for row in sorted_data:
-            writer.writerow(row)
+            writer.writerow(roww)
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
