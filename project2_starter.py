@@ -1,13 +1,13 @@
 # SI 201 HW4 (Library Checkout System)
-# Your name:
-# Your student id:
-# Your email:
-# Who or what you worked with on this homework (including generative AI like ChatGPT):
-# If you worked with generative AI also add a statement for how you used it.
+# Your name: Bisher Habbab
+# Your student id: 17094759
+# Your email: habbab@umich.edu
+# Who or what you worked with on this homework (including generative AI like ChatGPT): No one
+# If you worked with generative AI also add a statement for how you used it. N/A
 # e.g.:
 # Asked ChatGPT for hints on debugging and for suggestions on overall code structure
 #
-# Did your use of GenAI on this assignment align with your goals and guidelines in your Gen AI contract? If not, why?
+# Did your use of GenAI on this assignment align with your goals and guidelines in your Gen AI contract? If not, why? Yes
 #
 # --- ARGUMENTS & EXPECTED RETURN VALUES PROVIDED --- #
 # --- SEE INSTRUCTIONS FOR FULL DETAILS ON METHOD IMPLEMENTATION --- #
@@ -41,7 +41,19 @@ def load_listing_results(html_path) -> list[tuple]:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    with open(html_path, encoding="utf-8-sig") as f:
+        soup = BeautifulSoup(f, "html.parser")
+
+    results = []
+    title_tags = soup.find_all(attrs={"data-testid": "listing-card-title"})
+    for tag in title_tags:
+        title = tag.get_text(strip=True)
+        id_attr = tag.get("id", "")
+        id_match = re.search(r"title_(\d+)", id_attr)
+        if id_match:
+            listing_id = id_match.group(1)
+            results.append((title, listing_id))
+    return results
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
@@ -187,7 +199,8 @@ def google_scholar_searcher(query):
 class TestCases(unittest.TestCase):
     def setUp(self):
         self.base_dir = os.path.abspath(os.path.dirname(__file__))
-        self.search_results_path = os.path.join(self.base_dir, "html_files", "search_results.html")
+        self.search_results_path = os.path.join(
+            self.base_dir, "html_files", "search_results.html")
 
         self.listings = load_listing_results(self.search_results_path)
         self.detailed_data = create_listing_database(self.search_results_path)
@@ -236,7 +249,8 @@ class TestCases(unittest.TestCase):
 
 
 def main():
-    detailed_data = create_listing_database(os.path.join("html_files", "search_results.html"))
+    detailed_data = create_listing_database(
+        os.path.join("html_files", "search_results.html"))
     output_csv(detailed_data, "airbnb_dataset.csv")
 
 
