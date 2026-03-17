@@ -267,7 +267,7 @@ def validate_policy_numbers(data) -> list[str]:
             continue
         if not valid_pattern.match(policy_number):
             invalid.append(listing_id)
-    return invalid
+    return invalidd
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
