@@ -2,9 +2,9 @@
 # Your name: Bisher Habbab
 # Your student id: 17094759
 # Your email: habbab@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT): 
+# Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
-# 
+#
 #
 # Did your use of GenAI on this assignment align with your goals and guidelines in your Gen AI contract? If not, why? Yes
 #
@@ -86,7 +86,8 @@ def get_listing_details(listing_id) -> dict:
     soup = BeautifulSoup(content, "html.parser")
 
     # Policy number
-    pol_match = re.search(r"Policy number.*?<span[^>]*>(.*?)</span>", content, re.DOTALL)
+    pol_match = re.search(
+        r"Policy number.*?<span[^>]*>(.*?)</span>", content, re.DOTALL)
     if pol_match:
         raw = pol_match.group(1).strip().replace("\ufeff", "")
         if raw.lower() == "pending":
@@ -121,9 +122,11 @@ def get_listing_details(listing_id) -> dict:
         if div.get_text(strip=True) == "Location":
             nxt = div.find_next_sibling()
             if nxt:
-                al_tag = nxt.find(attrs={"aria-label": re.compile(r"[\d.]+ out of")})
+                al_tag = nxt.find(
+                    attrs={"aria-label": re.compile(r"[\d.]+ out of")})
                 if al_tag:
-                    m = re.search(r"([\d.]+) out of", al_tag.get("aria-label", ""))
+                    m = re.search(r"([\d.]+) out of",
+                                  al_tag.get("aria-label", ""))
                     if m:
                         rating = float(m.group(1))
             break
@@ -170,7 +173,7 @@ def create_listing_database(html_path) -> list[tuple]:
             info["room_type"],
             info["location_rating"]
         ))
-    return databasee
+    return database
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
@@ -303,7 +306,8 @@ class TestCases(unittest.TestCase):
         # Check that the number of listings extracted is 18.
         self.assertEqual(len(self.listings), 18)
         # Check that the FIRST (title, id) tuple is ("Loft in Mission District", "1944564").
-        self.assertEqual(self.listings[0], ("Loft in Mission District", "1944564"))
+        self.assertEqual(self.listings[0],
+                         ("Loft in Mission District", "1944564"))
 
     def test_get_listing_details(self):
         html_list = ["467507", "1550913", "1944564", "4614763", "6092596"]
